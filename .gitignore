@@ -1,0 +1,4 @@
+tests/
+screenshots/
+*.zip
+node_modules/

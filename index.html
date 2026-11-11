@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Llama Trauma">
+  <meta name="theme-color" content="#5DBF6A">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="description" content="A hopping llama adventure for Brianna. Cross roads, rivers, and tracks!">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; connect-src 'self'; media-src 'self' blob:; font-src 'self'; worker-src 'self'; manifest-src 'self'; base-uri 'none'; form-action 'none'">
+  <title>Llama Trauma</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" type="image/png" href="icons/favicon.png">
+  <link rel="apple-touch-icon" href="icons/icon-180.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="icons/icon-180.png">
+  <link rel="apple-touch-icon" sizes="192x192" href="icons/icon-192.png">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <div id="app">
+    <canvas id="game" width="390" height="844"></canvas>
+
+    <div id="hud" class="hud hidden" aria-live="polite">
+      <div class="hud-left">
+        <div class="coin-chip" id="hud-coins" title="Coins">
+          <span class="coin-dot" aria-hidden="true"></span>
+          <span id="hud-coin-count">0</span>
+        </div>
+      </div>
+      <div class="hud-center">
+        <div class="score-chip" id="hud-score">0</div>
+      </div>
+      <div class="hud-right">
+        <button type="button" class="icon-btn" id="btn-mute" aria-label="Mute sounds" aria-pressed="false">🔊</button>
+      </div>
+    </div>
+
+    <div id="hint" class="hint hidden">Tap to hop · Swipe to move</div>
+
+    <section id="title-screen" class="screen" aria-label="Llama Trauma home">
+      <div class="title-block">
+        <p class="for-brianna">For Brianna</p>
+        <h1 class="logo" aria-label="Llama Trauma">Llama Trauma</h1>
+        <p class="tagline">Hop, hop, hop — don't get bumped!</p>
+      </div>
+      <div class="menu-buttons">
+        <button type="button" class="btn btn-play" id="btn-play">Play</button>
+        <button type="button" class="btn btn-dress" id="btn-dress">Dress Up</button>
+      </div>
+      <div class="title-stats">
+        <span>Best <strong id="title-best">0</strong></span>
+        <span class="dot">•</span>
+        <span>Coins <strong id="title-coins">0</strong></span>
+      </div>
+      <button type="button" class="icon-btn mute-float" id="btn-mute-title" aria-label="Mute sounds" aria-pressed="false">🔊</button>
+    </section>
+
+    <section id="customizer-screen" class="screen hidden" aria-label="Llama customizer">
+      <header class="sheet-header">
+        <button type="button" class="btn btn-back" id="btn-custom-back">Back</button>
+        <h2>Dress Your Llama</h2>
+        <button type="button" class="btn btn-done" id="btn-custom-done">Done</button>
+      </header>
+      <div class="preview-wrap">
+        <canvas id="preview" width="360" height="300"></canvas>
+      </div>
+      <div class="custom-scroll">
+        <h3>Body color</h3>
+        <div id="body-swatches" class="swatches" role="listbox" aria-label="Body colors"></div>
+        <label class="custom-color">
+          Custom color
+          <input type="color" id="body-picker" value="#F3D7A0" aria-label="Custom body color">
+        </label>
+
+        <h3>Blanket &amp; saddle</h3>
+        <div id="blanket-swatches" class="swatches" role="listbox" aria-label="Blanket colors"></div>
+        <label class="custom-color">
+          Custom blanket
+          <input type="color" id="blanket-picker" value="#E85D4C" aria-label="Custom blanket color">
+        </label>
+
+        <h3>Hats</h3>
+        <p class="hat-note">Every color is free. Some hats can be unlocked with coins you find on the path.</p>
+        <div id="hat-row" class="hat-row" role="listbox" aria-label="Hats"></div>
+        <p id="hat-msg" class="hat-msg" hidden></p>
+      </div>
+    </section>
+
+    <section id="gameover-screen" class="screen hidden" aria-label="Game over">
+      <div class="go-card">
+        <p class="oops" id="go-oops">Oops!</p>
+        <p class="go-reason" id="go-reason">Bonk!</p>
+        <div class="go-scores">
+          <div><span>Score</span><strong id="go-score">0</strong></div>
+          <div><span>Best</span><strong id="go-best">0</strong></div>
+          <div><span>Coins</span><strong id="go-coins">0</strong></div>
+        </div>
+        <button type="button" class="btn btn-play" id="btn-again">Play Again</button>
+        <div class="go-row">
+          <button type="button" class="btn btn-dress" id="btn-go-dress">Dress Up</button>
+          <button type="button" class="btn btn-back" id="btn-go-home">Home</button>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
